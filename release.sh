@@ -23,8 +23,8 @@ cp conf/config.inc.php-dist conf/config.inc.php
 
 # build release files 
 cd /tmp
-tar cz phpPgAdmin-${2} > phpPgAdmin-${2}.tar.gz
-tar cj phpPgAdmin-${2} > phpPgAdmin-${2}.tar.bz2
+tar c phpPgAdmin-${2} | bzip2 --best > phpPgAdmin-$2.tar.bz2
+tar c phpPgAdmin-${2} | gzip --best > phpPgAdmin-$2.tar.gz
 zip -9 -r phpPgAdmin-${2}.zip phpPgAdmin-${2}
 
-echo "Now upload the new files ( /tmp/phpPgAdmin-{$2}.* to the Github release page."
+echo "Now upload the new files ( /tmp/phpPgAdmin-$2.* to the Github release page."
