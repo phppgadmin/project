@@ -27,4 +27,17 @@ tar c phpPgAdmin-${2} | bzip2 --best > phpPgAdmin-$2.tar.bz2
 tar c phpPgAdmin-${2} | gzip --best > phpPgAdmin-$2.tar.gz
 zip -9 -r phpPgAdmin-${2}.zip phpPgAdmin-${2}
 
+# sign the release files
+gpg $GPGOPT --detach-sign phpPgAdmin-$2.tar.bz2
+gpg $GPGOPT --detach-sign phpPgAdmin-$2.tar.gz
+gpg $GPGOPT --detach-sign phpPgAdmin-$2.zip
+
+md5 phpPgAdmin-$2.tar.bz2
+md5 phpPgAdmin-$2.tar.gz
+md5 phpPgAdmin-$2.zip
+
+shasum phpPgAdmin-7.13.0.tar.bz2
+shasum phpPgAdmin-7.13.0.tar.gz
+shasum phpPgAdmin-7.13.0.zip
+
 echo "Now upload the new files ( /tmp/phpPgAdmin-$2.* to the Github release page."
